@@ -55,7 +55,8 @@
 				</section>
                 
                 <section data-transition="convex">                    
-					<h3>Relational Databases</h3>					
+                    <h3>RDS - Relational Database Service</h3>
+                    <img src="images/rds.png" style="height: 112px; border: none; background: none;">
 					<ul>
 						<li class="fragment fade-up">Tables, Rows, Columns</li>						
                         <img class="fragment fade-up" src="images/data_table.png" style="height: 153px; border: none; background: none;">
@@ -65,10 +66,106 @@
                 <section data-transition="convex">                    
 					<h3>Relational Database Types in AWS</h3>					
 					<ul>
-						<li class="fragment fade-up">Tables, Rows, Columns</li>						
-                        <img class="fragment fade-up" src="images/data_table.png" style="height: 153px; border: none; background: none;">
+                        <li>SQL Server</li>
+                        <li>Oracle</li>
+                        <li>MySQL Server</li>
+                        <li>PostgreSQL</li>
+                        <li>Aurora</li>
+                        <li>MariaDB</li>
 					</ul>					
 				</section>
+                
+                <section data-transition="convex">                    
+					<h3>Non Relational Databases</h3>					
+					<ul>
+                        <li class="fragment fade-up">Database</li>                        
+                        <ul class="fragment fade-up">
+                            <li>Collection		= Table</li>
+                            <li>Document		= Row</li>
+                            <li>Key Value Pairs	= Fields</li>
+                        </ul>                        
+					</ul>	
+                    <pre class="fragment fade-up"><code data-trim data-noescape>
+                    {
+                        "id":"1",
+                        "firstName":"John",
+                        "lastName":"Smith",
+                        "age":"23",
+                        "address":[
+                            {
+                                "street":"21 Jump Street"
+                            }
+                        ]
+                    }
+
+                    </code></pre>
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>ElastiCache</h3>
+                    <img src="images/elasticache.png" style="height: 112px; border: none; background: none;">
+					<ul>                
+                        <li class="fragment fade-up">Makes it easy to deploy, operate and scale an in-memory cache in the cloud</li>
+                        <li class="fragment fade-up">Improve performance of web applications to retrieve information from fast, managed, in-memory caches (instead of disk-based</li>    
+                        <ul class="fragment fade-up">
+                            <li>Memcached</li>
+                            <li>Redis</li>
+                        </ul>
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>OLTP vs OLAP</h3>					
+					<ul>
+                        <li class="fragment fade-up">Online Transaction Processing (OLTP)
+                            <ul>
+                                <li>Query one specific record or smaller recordset (pull up record with id 1234)</li>
+                                <li>hits the DB lightly</li>
+                            </ul>
+                        </li>
+                        <li class="fragment fade-up">Online Analytics Processing (OLAP)
+                            <ul>
+                                <li>To analyze large volume of information</li>
+                                <li>Data warehousing – copy of production database (in different type of architecture e.g. columnar storage)</li>
+                            </ul>
+                        </li>
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>Redshift - Data Warehousing</h3>					
+					<ul>
+                        <li>Used for business intelligence. Used to pull in very large and complex data sets. Usually used by management to do queries  on data (current performance vs targets)</li>                        
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>Database Migration Service</h3>					
+					<ul>
+                        <li class="fragment fade-up">Allows to migrate a production database to AWS</li>
+                        <li class="fragment fade-up">AWS manages data transformation, compression and parallel transfer</li>
+                        <li class="fragment fade-up">Data changes to the source database that occur during the migration process are automatically replicated to the target</li>
+                        <li class="fragment fade-up">AWS schema conversion tool (schema, views, stored procedures, functions)</li>
+					</ul>					
+				</section>
+                
+                <section data-transition="slide-in fade-out">                    
+					<h3>RDS - Multi AZ</h3>					
+                    <img src="images/rds-multiaz.png" style="border: none; background: none;">
+				</section>
+                
+                <section data-transition="fade-in slide-out">
+					<h3>RDS - Multi AZ</h3>					
+                    <img src="images/rds-multiaz-2.png" style="border: none; background: none;">
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3></h3>					
+					<ul>
+                        <li></li>
+					</ul>					
+				</section>
+                
 			</div>
 		</div>
 
@@ -79,7 +176,7 @@
 			var init = {
 				history: true,
 				controls: true,
-				parallaxBackgroundImage: '/images/bg1.jpg',
+				parallaxBackgroundImage: 'images/bg1.jpg',
 				parallaxBackgroundSize: "3840px 2160px",
 
 				dependencies: [
