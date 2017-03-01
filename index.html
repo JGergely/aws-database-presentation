@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>GRO Acloud.guru training - AWS Database</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <section data-transition="convex">
+					<h3>AWS Database</h3>
+					<img src="images/Generic_Databases.png" style="height: 300px; border: none; background: none;">
+				</section>
+                
+                 <section data-transition="convex">					
+					<p>What are AWS Database options?</p>
+					<ul>
+						<li class="fragment fade-up">RDS</li>
+						<li class="fragment fade-up">DynamoDB</li>
+						<li class="fragment fade-up">ElastiCache</li>
+                        <li class="fragment fade-up">Redshift</li>
+                        <li class="fragment fade-up">DMS (in Migration section now)</li>
+					</ul>					
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			var init = {
+				history: true,
+				controls: true,
+				parallaxBackgroundImage: '/images/bg1.jpg',
+				parallaxBackgroundSize: "3840px 2160px",
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'socket.io-1.3.5.js', async: true },
+					{ src: 'plugin/multiplex/master.js', async: true }
+				]
+			};
+
+			/*//no cheating :) follow the presentation please until it is over
+			if(window.location.href.indexOf("nopresentation") === -1){
+					init.multiplex = {
+						 secret: null,
+						 id: '61b5692141ebe40c',
+						 url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh'
+					};
+					init.dependencies.push({ src: 'plugin/multiplex/client.js', async: true });
+					init.controls = false;
+					init.keyboard = false;
+			}*/
+
+			Reveal.initialize(init);
+		</script>
+	</body>
+</html>
