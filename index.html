@@ -75,6 +75,65 @@
 					</ul>					
 				</section>
                 
+                 <section data-transition="convex">                    
+					<h3>RDS - Backups</h3>					
+					<ul>
+                        <li class="fragment fade-up">Automated Backups</li>
+                        <ul>
+                            <li class="fragment fade-up">Recover the db within a retention period – 1 to 35 days</li>
+                            <li class="fragment fade-up">Full daily snapshot + transaction logs</li>
+                            <li class="fragment fade-up">Allows point in time recovery down to a second</li>
+                            <li class="fragment fade-up">Stored in S3 (free storage same size as the db)</li>                        
+                        </ul>
+                        <li class="fragment fade-up">Database Snapshots</li>
+                        <ul>
+                            <li class="fragment fade-up">Done manually</li>
+                            <li class="fragment fade-up">Stored after the RDS instance gets deleted</li>
+                            <li class="fragment fade-up">Restored DB will be a new RDS instance</li>
+                        </ul>
+					</ul>					
+				</section>
+                
+                 <section data-transition="convex">                    
+					<h3>RDS - Encryption</h3>					
+					<ul>
+                        <li class="fragment fade-up">Supported DB types</li>
+                        <ul class="fragment fade-up">
+                            <li>MySQL</li>
+                            <li>Oracle</li>
+                            <li>SQL Server</li>
+                            <li>PostgreSQL</li>
+                            <li>MariaDB</li>
+                        </ul>
+                        <li class="fragment fade-up">Encrypting an existing DB is not supported yet</li>
+					</ul>					
+				</section>
+                
+                <section data-transition="slide-in fade-out">                    
+					<h3>RDS - Multi AZ</h3>					
+                    <img src="images/rds-multiaz.png" style="border: none; background: none;">
+				</section>
+                
+                <section data-transition="fade-in slide-out">
+					<h3>RDS - Multi AZ</h3>					
+                    <img src="images/rds-multiaz-2.png" style="border: none; background: none;">
+				</section>
+                
+                <section data-transition="convex">
+					<h3>RDS - Multi AZ</h3>					
+                    <ul>
+                        <li class="fragment fade-up">AWS handles replication - writes to production DB will be synchronised to the stand by DB</li>
+                        <li class="fragment fade-up">RDS will automatically failover to the standby DB in the event of:
+                            <ul class="fragment fade-up">
+                                <li>DB maintenance</li>
+                                <li>DB instance failure</li>
+                                <li>AZ failure</li>
+                            </ul>
+                        </li>
+                        <li class="fragment fade-up">IMPORTANT: Only for Disaster Recovery - for performance improvement you need Read Replicas</li>
+                    </ul>
+				</section>
+                
                 <section data-transition="convex">                    
 					<h3>Non Relational Databases</h3>					
 					<ul>
@@ -148,17 +207,7 @@
                         <li class="fragment fade-up">AWS schema conversion tool (schema, views, stored procedures, functions)</li>
 					</ul>					
 				</section>
-                
-                <section data-transition="slide-in fade-out">                    
-					<h3>RDS - Multi AZ</h3>					
-                    <img src="images/rds-multiaz.png" style="border: none; background: none;">
-				</section>
-                
-                <section data-transition="fade-in slide-out">
-					<h3>RDS - Multi AZ</h3>					
-                    <img src="images/rds-multiaz-2.png" style="border: none; background: none;">
-				</section>
-                
+    
                 <section data-transition="convex">                    
 					<h3></h3>					
 					<ul>
