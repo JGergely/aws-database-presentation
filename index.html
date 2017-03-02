@@ -385,7 +385,22 @@
                         </ul>
 					</ul>					
 				</section>
-    
+                
+                <section data-transition="convex">                    
+					<h3>ElastiCache - Redis</h3>
+                    <img src="images/redis.png" style="height: 128px; border: none; background: none;">
+					<ul>
+                        <li class="fragment fade-up"><a href="https://redis.io/clients" target="_blank">Redis client libs</a></li>
+                        <li class="fragment fade-up">Easy connection setup with Redisson</li>
+                        <pre class="fragment fade-up"><code data-trim data-noescape>
+                        Config config = new Config();
+                        config.useElasticacheServers()
+                              .addNodeAddress("messenger-cluster.8zti7b.0001.euc1.cache.amazonaws.com:6379");
+                        RedissonClient redisson = Redisson.create(config);
+                        </code></pre>
+					</ul>					
+				</section>
+                
                 <!---------------------- Aurora ---------------------->
                 <section data-transition="convex">                    
 					<h3>Aurora</h3>					
