@@ -32,28 +32,24 @@
 					<h3>What are AWS Database options?</h3>
 					<ul>
 						<li class="fragment fade-up">RDS
-                            <ul><li>Managed Relational Database Service
-</li></ul>
+                            <ul><li>Managed Relational Database Service</li></ul>
                         </li>
 						<li class="fragment fade-up">DynamoDB
-                            <ul><li>Managed NoSQL Database
-</li></ul>
+                            <ul><li>Managed NoSQL Database</li></ul>
                         </li>
 						<li class="fragment fade-up">ElastiCache
-                            <ul><li>In-Memory Cache
-</li></ul>
+                            <ul><li>In-Memory Cache</li></ul>
                         </li>
                         <li class="fragment fade-up">Redshift
-                            <ul><li>Fast, Simple, Cost-Effective Data Warehousing
-</li></ul>
+                            <ul><li>Fast, Simple, Cost-Effective Data Warehousing</li></ul>
                         </li>
                         <li class="fragment fade-up">DMS (in Migration section now)
-                            <ul><li>Managed Database Migration Service
-</li></ul>
+                            <ul><li>Managed Database Migration Service</li></ul>
                         </li>
 					</ul>					
 				</section>
                 
+                <!---------------------- RDS ---------------------->
                 <section data-transition="convex">                    
                     <h3>RDS - Relational Database Service</h3>
                     <img src="images/rds.png" style="height: 112px; border: none; background: none;">
@@ -122,7 +118,7 @@
                 <section data-transition="convex">
 					<h3>RDS - Multi AZ</h3>					
                     <ul>
-                        <li class="fragment fade-up">AWS handles replication - writes to production DB will be synchronised to the stand by DB</li>
+                        <li class="fragment fade-up">AWS handles replication - writes to production DB will be synchronised to the standby DB in another AZ</li>
                         <li class="fragment fade-up">RDS will automatically failover to the standby DB in the event of:
                             <ul class="fragment fade-up">
                                 <li>DB maintenance</li>
@@ -134,6 +130,45 @@
                     </ul>
 				</section>
                 
+                <section data-transition="slide-in fade-out">                    
+					<h3>RDS - Multi AZ</h3>					
+                    <img src="images/read_replica_1.png" style="border: none; background: none;">
+				</section>
+                
+                <section data-transition="fade-out">
+					<h3>RDS - Multi AZ</h3>					
+                    <img src="images/read_replica_2.png" style="border: none; background: none;">
+				</section>
+                
+                <section data-transition="slide-out">
+					<h3>RDS - Multi AZ</h3>					
+                    <img src="images/read_replica_3.png" style="border: none; background: none;">
+				</section>
+                
+                <section data-transition="convex">
+					<h3>RDS - Read Replica</h3>					
+                    <ul>
+                        <li class="fragment fade-up">asynchronous replication from primary RDS instance</li>
+                        <li class="fragment fade-up">for scaling up read-heavy DB workloads</li>
+                        <li class="fragment fade-up">up to 5 Read Replicas for a DB instance</li>
+                        <li class="fragment fade-up">can be promoted to be their own databases</li>
+                        <ul class="fragment fade-up">
+                            <li>MySQL</li>
+                            <li>PostgreSQL</li>
+                            <li>MariaDB</li>
+                        </ul>
+                    </ul>
+				</section>
+                
+                <section data-transition="convex">
+					<h3>RDS vs DynamoDB</h3>					
+                    <ul>
+                        <li class="fragment fade-up">RDS - use a bigger instance or add Read Replica</li>
+                        <li class="fragment fade-up">DynamoDB - offers "push button" scaling, i.e. scaling on the fly, without any down time</li>
+                    </ul>
+				</section>
+                
+                <!---------------------- DynamoDB ---------------------->
                 <section data-transition="convex">                    
 					<h3>Non Relational Databases</h3>					
 					<ul>
@@ -156,24 +191,78 @@
                             }
                         ]
                     }
-
                     </code></pre>
 				</section>
                 
-                <section data-transition="convex">                    
-					<h3>ElastiCache</h3>
-                    <img src="images/elasticache.png" style="height: 112px; border: none; background: none;">
-					<ul>                
-                        <li class="fragment fade-up">Makes it easy to deploy, operate and scale an in-memory cache in the cloud</li>
-                        <li class="fragment fade-up">Improve performance of web applications to retrieve information from fast, managed, in-memory caches (instead of disk-based</li>    
+                <section data-transition="fade-out">
+					<h3>DynamoDB</h3>
+                    <img src="images/dynamodb.png" style="height: 128px; border: none; background: none;">
+					<ul>
+                        <li class="fragment fade-up">fast, flexible, fully managed NoSQL DB service</li>
+                        <li class="fragment fade-up">provides consistent, single-digit milisecond latency at any scale</li>
+                        <li class="fragment fade-up">supports both document and key-value data models</li>
+                        <li class="fragment fade-up">great fit for mobile, web, gaming, ad-tech, IoT</li>
+					</ul>	                    
+				</section>
+                
+                <section data-transition="fade-out">
+					<h3>DynamoDB</h3>
+					<ul>
+                        <li>stored on SSD</li>
+                        <li class="fragment fade-up">spread across 3 geographically distinct data centers - i.e. in different facilities</li>
+					</ul>	                    
+				</section>
+                
+                <section data-transition="fade-out">
+					<h3>DynamoDB</h3>
+					<ul>
+                        <li>Eventual Consistent Reads (Default)</li>
                         <ul class="fragment fade-up">
-                            <li>Memcached</li>
-                            <li>Redis</li>
+                            <li>consistency across all copies of data is reached within a second</li>
+                            <li>repeating a read after a short time should return the updated data</li>
                         </ul>
+                        <li class="fragment fade-up">Strongly Consistent Reads</li>
+                        <ul class="fragment fade-up">
+                            <li>returns a result that reflects all writes that received a successful response prior to the read</li>
+                        </ul>
+					</ul>	                    
+				</section>
+                
+                <section data-transition="fade-out">
+					<h3>DynamoDB Pricing</h3>
+					<ul>
+                        <li class="fragment fade-up">Provisioned Throughput Capapcity</li>
+                        <ul class="fragment fade-up">
+                            <li>Write Throughput $0.0065 per hour for every 10 units</li>
+                            <li>Read Throughput $0.0065 per hour for every 50 units</li>
+                        </ul>
+                        <li class="fragment fade-up">1 write unit = 1 write / second</li>
+                        <li class="fragment fade-up">Storage cost: $0.25 / GB / Month</li>
+					</ul>
+				</section>
+                
+                <section data-transition="fade-out">
+					<h3>DynamoDB Pricing Example</h3>
+					<ul>
+                        <li class="fragment fade-up">1 million writes / day</li>
+                        <li class="fragment fade-up">1 million reads / day</li>
+                        <li class="fragment fade-up">storing 3 GB of data</li>
+                        <li class="fragment fade-up">operations / second = 1 000 000 (writes) / 24 (hours) / 60 (minutes) / 60 (seconds) = 11.6 writes /second</li>
+                        <li class="fragment fade-up">11.6 read/writes / sec = 12 read/write capacity unit</li>
+                        <li class="fragment fade-up">Cost for Write Capacity Units = (0.0065/10) x 12 x 24 = $0.1872</li>
+                        <li class="fragment fade-up">Cost for Read Capacity Units = (0.0065/50) x 12 x 24 = $0.0374</li>
+					</ul>	                    
+				</section>
+                
+                <!---------------------- Redshift ---------------------->
+                <section data-transition="convex">                    
+					<h3>Data Warehousing</h3>
+					<ul>
+                        <li>Used for business intelligence. Used to pull in very large and complex data sets. Usually used by management to do queries on data (current performance vs targets)</li>
 					</ul>					
 				</section>
                 
-                <section data-transition="convex">                    
+                 <section data-transition="convex">                    
 					<h3>OLTP vs OLAP</h3>					
 					<ul>
                         <li class="fragment fade-up">Online Transaction Processing (OLTP)
@@ -192,14 +281,159 @@
 				</section>
                 
                 <section data-transition="convex">                    
-					<h3>Redshift - Data Warehousing</h3>					
+					<h3>Redshift - Data Warehousing</h3>
+                    <img src="images/redshift.png" style="height: 135px; border: none; background: none;">
 					<ul>
-                        <li>Used for business intelligence. Used to pull in very large and complex data sets. Usually used by management to do queries  on data (current performance vs targets)</li>                        
+                        <li class="fragment fade-up">fully managed, petabyte-scale data warehouse service</li>
+                        <li class="fragment fade-up">Single node - 160 Gb</li>
+                        <li class="fragment fade-up">Multi-Node
+                            <ul>
+                                <li class="fragment fade-up">Leader Node - manages client connection and receives queries</li>
+                                <li class="fragment fade-up">Compute Node - store data and perform computations (up to 128)</li>
+                            </ul>
+                        </li>
 					</ul>					
 				</section>
                 
                 <section data-transition="convex">                    
-					<h3>Database Migration Service</h3>					
+					<h3>Redshift - Architecture</h3>
+					<ul>
+                        <li class="fragment fade-up">Columnar Data Storage</li>
+                        <ul>
+                            <li class="fragment fade-up">row-based systems are ideal for transaction processing</li>
+                            <li class="fragment fade-up">column-based systems are ideal for data warehousing and analytics</li>
+                            <ul>
+                                <li class="fragment fade-up">queries involve aggregates performed over large data sets</li>
+                            </ul>
+                        </ul>
+                        <li class="fragment fade-up">Advanced Compression</li>
+                        <ul>
+                            <li class="fragment fade-up">multiple compression techniques, automatically selects the most appropriate</li>
+                        </ul>
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>Redshift - Architecture</h3>
+					<ul>
+                        <li class="fragment fade-up">Massively Parallel Processing (MPP)</li>
+                        <ul>
+                            <li class="fragment fade-up">automatically distributes data and query load across all nodes</li>
+                            <li class="fragment fade-up">easy to add additional nodes</li>
+                            <ul>
+                                <li class="fragment fade-up">enables to maintain fast query performance as the data warehouse grows</li>
+                            </ul>
+                        </ul>
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>Redshift - Pricing</h3>
+					<ul>
+                        <li class="fragment fade-up">Compute Node Hours</li>
+                        <ul>
+                            <li class="fragment fade-up">compute nodes / hours (leader nodes doesn't count)</li>
+                            <li class="fragment fade-up">3 nodes, 24 hours, 30 days = 2160 hours</li>
+                        </ul>
+                        <li class="fragment fade-up">Backup</li>
+                        <li class="fragment fade-up">Data transfer (only within a VPC)</li>
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>Redshift - Availability</h3>
+					<ul>
+                        <li class="fragment fade-up">Currently only available in 1 AZ</li>
+                        <li class="fragment fade-up">Can restore snapshots to new AZ's in the event of an outage</li>
+					</ul>					
+				</section>
+                
+                <!---------------------- ElastiCache ---------------------->
+                <section data-transition="convex">
+					<h3>ElastiCache</h3>
+                    <img src="images/elasticache.png" style="height: 112px; border: none; background: none;">
+					<ul>                
+                        <li class="fragment fade-up">Makes it easy to deploy, operate and scale an in-memory cache in the cloud</li>
+                        <li class="fragment fade-up">Improve performance of web applications to retrieve information from fast, managed, in-memory caches (instead of disk-based)</li>
+					</ul>
+				</section>
+                
+                <section data-transition="convex">
+					<h3>ElastiCache</h3>
+					<ul>
+                        <li class="fragment fade-up">Improves latency and throughput for many read-heavy application workloads</li>
+                        <ul>                
+                            <li class="fragment fade-up">social networking</li>
+                            <li class="fragment fade-up">gaming</li>
+                            <li class="fragment fade-up">media sharing</li>
+                            <li class="fragment fade-up">recommendation engine</li>
+					    </ul>
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>ElastiCache</h3>
+					<ul>                
+                        <li class="fragment fade-up">Memcached</li>
+                        <ul>
+                            <li class="fragment fade-up">no Multi-AZ support</li>
+                        </ul>
+                        <li class="fragment fade-up">Redis</li>
+                        <ul>
+                            <li class="fragment fade-up">open-source in-memory key-value store</li>
+                            <li class="fragment fade-up">supports Master/Slave replication and Multi-AZ</li>
+                        </ul>
+					</ul>					
+				</section>
+    
+                <!---------------------- Aurora ---------------------->
+                <section data-transition="convex">                    
+					<h3>Aurora</h3>					
+					<ul>
+                        <li class="fragment fade-up">MySQL compatible (5x better perf.), relational DB engine</li>
+                        <li class="fragment fade-up">speed and availability of high-end commercial DB's</li>
+                        <li class="fragment fade-up">simplicity and cost-effectiveness of open source DB's</li>
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>Aurora Scaling</h3>
+					<ul>
+                        <li class="fragment fade-up">start with 10GB, autoscales in 10GB increments to 64TB</li>
+                        <li class="fragment fade-up">compute resources can scale up to 32vCPUs and 244GB of Memory</li>
+                        <li class="fragment fade-up">no "push button" scaling like in DynamoDB, but it's fast</li>
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>Aurora Scaling</h3>
+					<ul>
+                        <li class="fragment fade-up">2 copies of your data in each AZ (minimum 3 AZ usage)</li>
+                        <li class="fragment fade-up">loss of 2 copies without affecting DB write availability</li>
+                        <li class="fragment fade-up">loss of 3 copies without affecting DB read availability</li>
+                        <li class="fragment fade-up">self-healing = automatically scanned for errors and repaired</li>
+					</ul>					
+				</section>
+                
+                <section data-transition="convex">                    
+					<h3>Aurora Replicas</h3>
+					<ul>
+                        <li class="fragment fade-up">Aurora Replicas - currently 15</li>
+                        <ul>
+                            <li class="fragment fade-up">automatic failover to aurora replica</li>
+                        </ul>
+                        <li class="fragment fade-up">MySQL Read Replicas - currently 5</li>
+                        <ul>
+                            <li class="fragment fade-up">NO automatic failover to MySQL read replica</li>
+                        </ul>
+                        
+					</ul>					
+				</section>
+                
+                <!---------------------- DMS ---------------------->
+                <section data-transition="convex">                    
+					<h3>Database Migration Service</h3>
+                    <img src="images/dms.png" style="height: 130px; border: none; background: none;">
 					<ul>
                         <li class="fragment fade-up">Allows to migrate a production database to AWS</li>
                         <li class="fragment fade-up">AWS manages data transformation, compression and parallel transfer</li>
